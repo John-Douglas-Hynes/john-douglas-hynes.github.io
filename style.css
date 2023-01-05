@@ -78,6 +78,17 @@ header #contact-me-btn:hover {
 
 .main-content .left-menu {
     flex: 2 1 0;
+    text-decoration: none;
+}
+
+.main-content .left-menu a, .main-content .right-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-content .left-menu a:hover {
+    background-color: lightslategray;
+    border-radius: 8px;
 }
 
 .main-content .left-menu .left-box {
