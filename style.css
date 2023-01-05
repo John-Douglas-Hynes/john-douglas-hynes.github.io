@@ -90,6 +90,26 @@ header #contact-me-btn:hover {
     top: 0;
 }
 
+.main-content .left-menu .left-box p, .main-content .right-menu .right-box p {
+    text-align: center;
+    font-size: 24px;
+}
+
+.main-content .left-menu .left-box ul, .main-content .right-menu .right-box ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content .left-menu .left-box li, .main-content .right-menu .right-box li{
+    padding: 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+}
+
 .main-content .center-content {
     flex: 5 1 128px;
     text-align: center;
