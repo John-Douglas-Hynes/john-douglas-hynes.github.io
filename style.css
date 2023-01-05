@@ -124,6 +124,68 @@ header #contact-me-btn:hover {
 .main-content .center-content {
     flex: 5 1 128px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.main-content .center-content a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-content .center-content p {
+    text-align: left;
+}
+
+.main-content .center-content .trip-report {
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.main-content .center-content .trip-report .subtext {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+}
+
+.main-content .center-content .trip-report .subtext p {
+    margin-right: 24px;
+    font-style: italic;
+}
+
+.main-content .trip-report img {
+    height: 150px;
+}
+
+.main-content .summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content figure {
+    float: left;
+}
+
+.trip-figure {
+    border-radius: 4rem;
+    display: flex;
+    flex-direction: column;
+    width: 60rem;
+    margin: 3rem;
+    align-self: center;
+}
+
+img {
+    display: block;
+    margin: 2rem;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
 }
 
 .main-content .right-menu {
