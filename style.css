@@ -86,7 +86,7 @@ header #contact-me-btn:hover {
     color: black;
 }
 
-.main-content .left-menu a:hover {
+.main-content .left-menu a:hover, .main-content .right-menu a:hover {
     background-color: lightslategray;
     border-radius: 8px;
 }
@@ -101,12 +101,16 @@ header #contact-me-btn:hover {
     top: 0;
 }
 
-.main-content .left-menu .left-box p, .main-content .right-menu .right-box p {
+.main-content .left-box h1, .main-content .right-box h1 {
     text-align: center;
     font-size: 24px;
 }
 
-.main-content .left-menu .left-box ul, .main-content .right-menu .right-box ul{
+.main-content .left-box h2, .main-content .right-box h2 {
+    font-size: 20px;
+}
+
+.main-content .left-menu ul, .main-content .right-box ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -114,11 +118,33 @@ header #contact-me-btn:hover {
     padding: 0;
 }
 
-.main-content .left-menu .left-box li, .main-content .right-menu .right-box li{
+.main-content .left-menu .left-box li {
     padding: 12px;
     border: 1px solid black;
     border-radius: 4px;
     text-align: center;
+}
+
+.main-content .right-menu .right-box ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.main-content .right-menu .right-box li {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.main-content .right-menu .right-box img {
+    height: 0;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .main-content .center-content {
