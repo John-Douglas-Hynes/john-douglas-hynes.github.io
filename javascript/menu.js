@@ -3,16 +3,22 @@ const menuButton = document.getElementById("navTab");
 const linksButton = document.getElementById("linksTab");
 const navMenu = document.querySelector(".left-box");
 const linksMenu = document.querySelector(".right-box");
+const collapseButton = document.getElementById("collapse");
 
 menuButton.addEventListener("click", pulloutMenuNav);
 linksButton.addEventListener("click", pulloutMenuLinks);
+collapseButton.addEventListener("click", collapse);
 
 function pulloutMenuNav() {
     menuButton.style.display = "none";
     linksButton.style.display = "none";
     navMenu.style.width = "100%";
     navMenu.style.margin = "0";
+    navMenu.style["box-shadow"] = "4px 4px 8px 4px lightslategrey";
+    navMenu.style["border-radius"] = "0";
     floatingTabs.appendChild(navMenu);
+    navMenu.style.display = "block";
+    collapseButton.style.display = "block";
 };
 
 function pulloutMenuLinks() {
@@ -20,5 +26,17 @@ function pulloutMenuLinks() {
     linksButton.style.display = "none";
     linksMenu.style.width = "100%";
     linksMenu.style.margin = "0";
+    linksMenu.style["box-shadow"] = "4px 4px 8px 4px lightslategrey";
+    linksMenu.style["border-radius"] = "0";
     floatingTabs.appendChild(linksMenu);
+    linksMenu.style.display = "block";
+    collapseButton.style.display = "block";
+};
+
+function collapse() {
+    navMenu.style.display = "none";
+    linksMenu.style.display = "none";
+    menuButton.style.display = "inline-block";
+    linksButton.style.display = "inline-block";
+    collapseButton.style.display = "none";
 }
