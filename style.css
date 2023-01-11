@@ -97,17 +97,17 @@ header #contact-me-btn:hover {
     display: none;
 }}
 
-.main-content .left-menu a, .main-content .right-menu a {
+.left-box a, .right-box a {
     text-decoration: none;
     color: black;
 }
 
-.main-content .left-menu a:hover, .main-content .right-menu a:hover {
+.left-box a:hover, .right-box a:hover {
     background-color: lightslategray;
     border-radius: 8px;
 }
 
-.main-content .left-menu .left-box {
+.left-box {
     background-color: gainsboro;
     padding: 8px;
     margin: 32px;
@@ -117,16 +117,16 @@ header #contact-me-btn:hover {
     top: 0;
 }
 
-.main-content .left-box h1, .main-content .right-box h1 {
+.left-box h1, .right-box h1 {
     text-align: center;
     font-size: 24px;
 }
 
-.main-content .left-box h2, .main-content .right-box h2 {
+.left-box h2, .right-box h2 {
     font-size: 20px;
 }
 
-.main-content .left-menu ul, .main-content .right-box ul {
+.left-box ul, .right-box ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -134,14 +134,14 @@ header #contact-me-btn:hover {
     padding: 0;
 }
 
-.main-content .left-menu .left-box li {
+.left-box li {
     padding: 12px;
     border: 1px solid black;
     border-radius: 4px;
     text-align: center;
 }
 
-.main-content .right-menu .right-box ul {
+.right-box ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -149,14 +149,14 @@ header #contact-me-btn:hover {
     gap: 12px;
 }
 
-.main-content .right-menu .right-box li {
+.right-box li {
     width: 32px;
     height: 32px;
     border-radius: 4px;
     text-align: center;
 }
 
-.main-content .right-menu .right-box img {
+.right-box img {
     height: 0;
     min-height: 100%;
     margin: 0;
@@ -241,7 +241,7 @@ img {
     width: 100%;
 }
 
-.main-content .right-menu .right-box {
+.right-box {
     background-color: gainsboro;
     padding: 8px;
     margin: 32px;
@@ -265,9 +265,9 @@ footer {
 
 .floating-tabs #navTab, .floating-tabs #linksTab {
     background-color: gainsboro;
-    height: 80px;
+    height: 64px;
     flex: 1 1 0;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .floating-tabs #navTab:hover {
@@ -275,7 +275,7 @@ footer {
 }
 
 #navTab {
-    border-radius: 40px 0 0 0;
+    border-radius: 24px 0 0 0;
     border-left: 0;
     border-top: 0;
     border-right: 1px solid black;
@@ -283,7 +283,7 @@ footer {
 }
 
 #linksTab {
-    border-radius: 0 40px 0 0;
+    border-radius: 0 24px 0 0;
     border-left: 1px  solid black;
     border-top: 0;
     border-right: 0;
