@@ -1,4 +1,8 @@
-const leftMenu = document.querySelector(".left-box");
-const rightMenu = document.querySelector(".right-box")
-leftMenu.remove();
-rightMenu.remove();
+const floatingTabs = document.querySelector(".floating-tabs");
+const menuButton = document.getElementById("navTab")
+
+menuButton.addEventListener("click", pulloutMenu);
+
+function pulloutMenu() {
+    floatingTabs.style.display = "none";
+};

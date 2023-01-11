@@ -86,7 +86,11 @@ header #contact-me-btn:hover {
    .main-content .left-menu, .main-content .right-menu {
     flex: 2 1 150px;
     text-decoration: none;
-}}
+    }
+    .floating-tabs #navTab, .floating-tabs #linksTab {
+    display: none;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .main-content .left-menu, .main-content .right-menu {
@@ -248,4 +252,40 @@ img {
 footer {
     flex: 0 0 24px;
     background-color: rgb(32, 32, 32);
+}
+
+.floating-tabs {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+}
+
+.floating-tabs #navTab, .floating-tabs #linksTab {
+    background-color: gainsboro;
+    height: 80px;
+    flex: 1 1 0;
+    font-size: 24px;
+}
+
+.floating-tabs #navTab:hover {
+    cursor: pointer;
+}
+
+#navTab {
+    border-radius: 40px 0 0 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 1px solid black;
+    border-bottom: 0;
+}
+
+#linksTab {
+    border-radius: 0 40px 0 0;
+    border-left: 1px  solid black;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
 }
