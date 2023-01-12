@@ -266,6 +266,8 @@ footer {
 
 .floating-tabs {
     display: flex;
+    text-decoration: none;
+    color: black;
 }
 
 #collapse {
