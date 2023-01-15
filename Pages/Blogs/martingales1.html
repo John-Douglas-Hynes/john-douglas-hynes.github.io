@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martingales part 1</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../javascript/menu.js" defer></script>
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+    <div class="mobile-menu">
+        <button id="collapse">collapse menu</button>
+        <div class="floating-tabs">
+            <button id="navTab">Navigation</button>
+            <button id="linksTab">External links</button>
+        </div>
+    </div>
+    <div class="outer-container">
+        <header>
+            <div class="left-header">
+                <ul id="left-header-btns">
+                    <li>                    
+                        <a href="../../index.html">
+                            <img id="home-icon" src="../../assets/house-chimney.svg" alt="Home icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title-card">
+                <p>John's webpage</p>
+            </div>
+            <div class="right-header">
+                <div id="contact-me-btn">
+                    <p>Contact me!</p>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="left-menu">
+                <div class="left-box">
+                    <h1>Navigation Menu</h1>
+                    <ul>
+                        <a href="../../index.html"><li>Home</li></a>
+                        <a href="./Blog-archive.html"><li>Blog archive</li></a>
+                        <a href="../Outdoors/trip-reports.html"><li>The great outdoors!
+                        </li></a>
+                        <a href="../Projects/projects.html"><li>Projects</li></a>
+                        <a href="../About-me/about.html"><li>About me</li></a>
+                    </ul>
+                </div>
+            </div>
+            <div class="center-content">
+                <h1>Martingales part 1: black boxes and compression</h1>
+                <p class="subhead">     Something that my little foray into coding has reminded me of is 
+                    just how many black boxes I use in my day-to-day life. How does pushing a single
+                    button make my laptop's operating system go from dormant to executing millions of 
+                    operations per second in a crazy, complicated dance? How does my wi-fi router send 
+                    signals through walls and other obstacles, but remain strong enough to transfer over 
+                    a megabite a second? Hell, I don't even understand how non-digital tech works: power
+                    steering, sewage treatment, electricity transformers, acetaminophen... it's a hopeless 
+                    endeavor to even list them all, let alone actually spend the time to really get them.
+                </p>
+                <p>
+                    On occasion I find myself motivated enough to try to learn about one of those black boxes, and 
+                    this week seems to be one such time. For better or for worse, I've got a desire to try to learn 
+                    one of the main tools used to prove what might be my favourite theorem &mdash; not exactly of equal 
+                    importance or utility of the black boxes listed above, but it seems fun so whatever ¯\_(ツ)_/¯.
+                </p>
+                <h2>Motivation: data compression and entropy</h2>
+                <p> Rather than jumping right into definition/theorem/proof style math, I'd like to go over a little background to motivate the theorem I'm trying to prove. 
+                    Let's start with a simple toy model of a data stream: suppose we have a ticker-tape which 
+                    spits out 0s and 1s in a random way: maybe it spits out a \(1\) with probability \(90\%\), and 
+                    a \(0\) with probability \(10\%\). One of the main interpretations of information-theoretic entropy is 
+                    that it tells you how much you can compress  this data: if we break the stream into chunks of four, there are going to 
+                    be a lot more chunks of \(1111\) than \(0000\), for instance. Thus if we encode the chunks in a way 
+                    that uses fewer symbols for \(1111\) than \(0000\) (maybe \(1111\) gets encoded as \(10\), while \(0000\) 
+                    gets encoded as \(0000\)), we can save on space! 
+                </p>
+                <p>
+                    My first intuition when learning about this stuff was to try to actually write down a compression algorithm. As it turns out, this is pretty doable!
+                    One idea is to build a binary tree by setting the root to be the set of all words of length n, then iteratively dividing each node into two collections 
+                    with roughly equal total probability. Once every node has just a single word in it, label all these terminal nodes with a code corresponding to their depth in the 
+                    tree -- this is the idea behind <a href="https://en.wikipedia.org/wiki/Shannon%E2%80%93Fano_coding" target="_blank" class="link">Shannon-Fano coding</a>. 
+                    It turns out this is not optimal -- it will asymptotically reach optimal compression <sup><a href="#footnote-1" class="footnote" id="top1">[1]</a></sup> as the length \(n \rightarrow \infty\), but there is a better way:
+                    if you build the tree from the bottom up instead of top down, you arrive at <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank" class="link">Huffman coding</a> 
+                    which is actually optimal (in this very limited setting where we are coding chunks of length \(n\), and we have a Bernoulli process generating our ticker tape output).
+                </p>
+                <p>
+                    While the above compression schemes work just fine, there's one more to mention, because it will turn out to be the most generalizable. 
+                    Note that coding a single ticker tape in consecutive chunks of length \(n\) is the same as coding the first chunk of \(n\) different ticker tapes; 
+                    to that end, let's denote the space of all possible ticker tapes by \(\Omega = \{0, 1\}^{\mathbb{N}}\), which has an associated 
+                    probability measure \(\mathbb{P}\) <sup><a href="#footnote-2" class="footnote" id="top2">[2]</a></sup>. Let \(X_i\) be the function which spits out the \(i^{\textrm{th}}\) 
+                    term of a given ticker tape \(t\), and let \(X^n = (X_1, X_2, \cdots, X_n)\), so \(X^n\) spits out the first chunk of \(n\) symbols.
+                    We'll use \( S_n\) to denote a string of length \(n\), and \(n_0, n_1\) will denote its number of 0s and 1s, respectively. Finally,
+                    let's define a function \(p(X^n): \Omega \rightarrow [0, 1]\) by \(p(X^n)(t) = \mathbb{P}(X^n = S_n)\) where \(S_n = X^n(t)\).
+                </p>
+                <p>
+                    What we'll show is that for most strings \(S_n\), we have \(\mathbb{P}(X^n = S_n) \sim 2^{-Hn}\) where \(H\) is a constant &mdash; not just any constant, however;
+                    it's the entropy! Note that this is actually one way of <em>defining</em> the entropy of a process. Our precise claim is that 
+                    $$A_{\varepsilon}^n = \{t \in \Omega: 2^{n (H - \varepsilon)} < p(X^n)(t) < 2^{n (H + \varepsilon)} \}$$
+                    has almost full measure in \(\Omega\), in the sense that \(\lim_{n \rightarrow \infty}\mathbb{P}(A_{\varepsilon}^n) = 1\).
+                </p>
+                <p>
+                    <em>Proof</em>: This turns out to just be the law of large numbers. Clearly \(p(X^n)(t) \in (2^{n (H - \varepsilon)}, 2^{n (H + \varepsilon)})\) is the same as 
+                    \(|-\frac{1}{n}\log_2 p(X^n) - H | < \varepsilon \). We want to show that the set where this inequality holds approaches full measure: this is precisely 
+                    <a href="https://en.wikipedia.org/wiki/Convergence_of_random_variables#Convergence_in_probability" target="_blank"  class="link">convergence in probabilty</a>. To do this, observe that 
+                     \[-\frac{1}{n}\log_2 (p(X^n)(t)) = -\frac{1}{n}\log_2 (\mathbb{P}(X^n = S_n)) = -\frac{1}{n}\log_2 (0.9^{n_1}0.1^{n_0}) = -\frac{n_1}{n}\log_2 (0.9) - \frac{n_0}{n} \log_2(0.1)\]
+                    Now from the weak law of large numbers, we know that \(\frac{n_1}{n} \rightarrow 0.9\) and \(\frac{n_0}{n} \rightarrow 0.1\) in probability as \(n\rightarrow \infty\),
+                    so we're done <sup><a href="#footnote-3" class="footnote" id="top3">[3]</a></sup>.
+                </p>
+                <p>
+                    Actually, there's another proof of this theorem I'd like to show, since it generalizes a little better. Let \(\sigma\) be the <em>shift operator</em>, which acts as \(\sigma(t_1, t_2, t_3, \dots) = (t_2, t_3, \dots)\).
+                    Then \(p(X^n)(t) = \prod_i p(X_i)(t) = \prod_i p(X_1)(\sigma^{i-1} t) \) where \(p(X_i)\) is the function which spits out the probability of the \(i^{\textrm{th}}\) coordinate of \(t\) (so 0.9 if \(t_i = 1\), 0.1 if \(t_i = 0\) in our example).
+                    Thus $$-\frac{1}{n}\log_2 (p(X^n)(t)) = -\frac{1}{n}\sum_{i=1}^n \log_2 (p(X_1)(\sigma^{i-1}t)) $$ and since our probability measure \(\mathbb{P}\) is ergodic, by the pointwise ergodic 
+                    theorem \(-\frac{1}{n}\sum_{i=1}^n \log_2 (p(X_1)(\sigma^{i-1}t)) \rightarrow \mathbb{E}[\log_2 p(X_1)] = H\). Note that this actually gives pointwise almost everywhere convergence!
+                </p>
+                <p>
+                    So how does that help us define a compression scheme? The gist is that the good set \(A_{\varepsilon}^n\) consists of at most \(2^{nH + n\varepsilon}\) elements, so 
+                    we can given them all unique codes of length at most \(nH+n\varepsilon\). The bad set is a set of really small measure, so who cares what happens there anyway? I'll leave 
+                    the interested reader to fill out the precise details, or check out the "Lossless compression scheme" section of <a href="https://stanforddatacompressionclass.github.io/notes/lossless_iid/aep.html" target="_blank" class = "link">this</a>
+                    page.
+                </p>
+                <p>
+                    Let's take a step back: what we have shown is that the sequence of functions \(-\frac{1}{n}\log_2 p(X^n)\) converges to \(H\) in probability. 
+                    This is known as the "Asymptotic Equipartition Property", and we have seen that it is enough to guarantee a lossless compression which is asymptotically close to optimal. We started by assuming that the \( X_i\)'s were i.i.d. and Bernoulli, 
+                    but if we can relax that assumption and still prove that \(-\frac{1}{n}\log_2 p(X^n) \rightarrow H\), we can get a compression scheme for many more kinds of ticker tape.                    
+                </p>
+                <p>
+                    The first generalization we'll consider is to Markov processes. This means that instead of each \(X_i\) being completely independent, it will depend on the previous symbol 
+                    \(X_{i-1}\); for example, we could have a ticker tape where after each 1 we get a 1 with probability \(75\%\) and a 0 with probability \(25\%\), and after a 0 we get 
+                    a \(50 - 50\) split between a 0 or a 1. Notationally, this means \(\mathbb{P}(X_n = t_n | X_{n-1} = i_{n-1}, X_{n-2} = i_{n-2}, \dots, X_1 = i_1) = \mathbb{P}(X_n = t_n | X_{n-1} = i_{n-1})\) 
+                    where \(\mathbb{P}(A | B)\) denotes conditional probability. Note that this doesn't fully determine the ticker-tape process, because the first symbol's distribution isn't specified. One way around this 
+                    would be to set an aribitrary initial distribution and go from there; it turns out that that works, but it's a little unsatisfying. What we really want is for our ticker-tape process 
+                    to be <em>stationary</em>, which means that it does not depend on the specific time that we begin to observe the ticker-tape output. Mathematically, this corresponds to the statement
+                    \(\mathbb{P}(\sigma^{-1}A) = \mathbb{P}(A)\) for any event \(A\).
+                    Now we should probably ask if such a measure \(\mathbb{P}\) even exists; luckily it does! The full construction is a little involved (see, e.g. Durette chapter 5). A key fact that we need comes 
+                    from the famous <a href="https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem" target="_blank" class="link">
+                    Perron-Frobenius theorem</a>, which guarantees the existance of a stationary distribution for \(\mathbb{P}(X_i = a)\) under very easy to satisfy conditions (namely that our transition probability matrix is irreducible).
+                    This also can be used to show that \(\mathbb{P}\) is ergodic, which we will make use of.
+                </p>
+                <p>
+                    For our example of a Markov ticker-tape, we have the following set up: the transition matrix is given by 
+                    $$T = \begin{pmatrix} \frac{3}{4} & \frac{1}{2} \\ \frac{1}{4} &\frac{1}{2} \end{pmatrix} $$
+                    which has Perron eigenvector of \(\begin{bmatrix} \frac{2}{3} \\ \frac{1}{3} \end{bmatrix}\), so our stationary probability measure has \(\mathbb{P}(X_i = 1) = \frac{2}{3}\), 
+                    \(\mathbb{P}(X_i = 0) = \frac{1}{3}\). 
+                </p>
+                <p>
+                    So, how are we going to prove that \(\frac{1}{n}\log_2 p(X^n)\) converges for this Markov process? Well, we should probably use the Markov property: for two random 
+                    variables \(X\) and \(Y\), we define $$p(X|Y)(t) = \mathbb{P}\Big(X = X(t)| Y = Y(t)\Big)$$
+                    it follows that \(p(X, Y) = p(X|Y)p(Y)\), and so we can expand $$ \frac{1}{n}\log_2 p(X^n) = \frac{p(X_1)}{n} + \frac{1}{n}\sum_{i = 2}^n \log_2 p(X_i|X_{i-1})$$
+                    where we have used the Markov property to simplify \(p(X_i|X_{i-1}, \dots, X_1)\). Now by stationarity, \(p(X_i|X_{i-1}) = p(X_2|X_{1})\circ \sigma^{i-2}\), and so 
+                    $$\frac{1}{n}\log_2 p(X^n) = \frac{p(X_1)}{n} + \frac{n-1}{n}\left(\frac{1}{n-1}\sum_{i=0}^{n-2}\log_2 p(X_2|X_{1})\circ \sigma^{i}\right)$$
+                    then as \(n \rightarrow \infty\) we have \(\frac{p(X_1)}{n} \rightarrow 0\), \(\frac{n-1}{n} \rightarrow 1\) and, by the pointwise ergodic theorem, 
+                    \(\sum_{i=0}^{n-2} \log_2 p(X_2|X_{1})\circ \sigma^{i} \rightarrow \mathbb{E}[\log_2 p(X_2|X_{1})]\). Ta-da! As promised, this also gives us a formula for the entropy;
+                    it's given by \(H = -\mathbb{E}[\log_2 p(X_2|X_{1})]\), and so
+                    $$H = - \sum_{ab}\mathbb{P}(ab)\log_2 p(X_2 = b|X_1 = a) = -\sum_{ab}P_a T_{ab} \log_2 T_{ab}$$ where \(P_i\) are the entries of the Perron vector, and \(T_{ij}\) the 
+                    entries of the transition matrix. With our numbers, we get \(H\simeq 0.874\).
+                </p>
+                <p class="lastPara">
+                    So what next? First, notice that there was nothing special about our Markov process having a memory of one. If we had said instead that the distribution for \(X_i\) is determined by \(X_{i-1}\) and 
+                    \(X_{i-2}\), the proof still goes through, we just end up with \(H = \mathbb{E}[\log_2 p(X_3|X_{2}, X_1)]\), and similarly for any \(k\)-step Markov process. Thus any further 
+                    generalizations will all have one thing in common: the distribution of \(X_i\) will depend on the arbitrarily far-away past. And this is exactly where the black box comes in:
+                    we need to be able to say something sensible about \(\lim_{n \rightarrow \infty} p(X_n| X_{n-1}, \dots, X_{1})\) if we want to generalize the method of proof that we've been using so far <sup><a href="#footnote-4" class="footnote" id="top4">[4]</a></sup>.
+                    In order to do so, we need a theory for <a style="color:deepskyblue;">Martingales</a>.
+                </p>
+                <p class ="footnote" id="footnote-1">
+                    <sup><a href="#top1" class="footnote">[1]</a></sup> There's an important but obvious point that I used to get confused by here: why are there so many different compression schemes if the best anyone can do 
+                    is determined by the entropy? It's because the words "asymptotically approaches" are potentially hiding a lot of inefficiency here: if we denote the number of bits used to encode a chunk of
+                     lenth \(n\) by \(\ell(n)\), Shannon's compression theorem says \(\frac{\mathbb{E}(\ell(n))}{n} \geq H\) (this defines optimality), and being asymptotically optimal just means \(\lim_{n\rightarrow \infty}\frac{\mathbb{E}(\ell(n))}{n} = H \). This means that, for instance, that if \(\ell(n) = H(n + \sqrt{n})\), 
+                     we would still get an asymptotically optimal coding, but we might be able to do much, much better.
+                </p>
+               <p class="footnote" id="footnote-2">
+                    <sup><a href="#top2" class="footnote">[2]</a></sup> This is the product of infinitely many Bernoulli\((0.9, 0.1)\) distributions, which exists by the Kolmogorov extension theorem. Technically it's overkill here, since we never actually 
+                    need an infinite sequence -- we could have used the probabilist convention of defining our sample space \(\Omega\) implicitly, as the smallest possible space that 
+                    accomodates all the random variables that we need. But I just like being very explicit I guess!
+               </p>
+               <p class="footnote" id="footnote-3">
+                    <sup><a href="#top3" class="footnote">[3]</a></sup> You might be thinking "hey, isn't this just using the weak law of large numbers as a black box?" but the weak law of large numbers for i.i.d Bernoulli 
+                    processes is 
+                    trivial to prove: it's a direct consequence of Chebyshev's inequality. Similarly both the pointwise ergodic theorem and Perron-Frobenius theorem aren't black boxes, because I actually  
+                    understand them... er, mostly...
+               </p>
+               <p class="footnote bottom-footnote" id="footnote-4">
+                    <sup><a href="#top4" class="footnote">[4]</a></sup> Of course, we could also try an entirely different method of proof; for instance, see <a href="https://en.wikipedia.org/wiki/Asymptotic_equipartition_property#Non-stationary_discrete-time_source_producing_independent_symbols" target="_blank" class="link">here</a> for an example which uses neither stationarity nor ergodicity, and instead uses 
+                    a condition on the moments of the distributions of \(X_i\). Only seems to work for independent sources, though.
+               </p>
+            </div>
+            <div class="right-menu">
+                <div class="right-box">
+                    <h1>External links</h1>
+                    <h2>Coding</h2>
+                    <ul>
+                        <a href="https://github.com/John-Douglas-Hynes/"><li><img src="../../assets/Octicons-mark-github.svg.png"></li></a>
+                        <a href="https://leetcode.com/Terrarium/"><li><img src="../../assets/leetcode.svg">
+                        </li></a>
+                    </ul>
+                    <h2>Social media</h2>
+                    <ul>
+                        <a href=""><li><img src="../../assets/Instagram-Icon.png"></li></a>
+                        <a href=""><li><img src="../../assets/strava.png">
+                        </li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
