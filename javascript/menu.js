@@ -4,10 +4,12 @@ const linksButton = document.getElementById("linksTab");
 const navMenu = document.querySelector(".left-box");
 const linksMenu = document.querySelector(".right-box");
 const collapseButton = document.getElementById("collapse");
+const contactButton = document.getElementById("contact-me-btn");
 
 menuButton.addEventListener("click", pulloutMenuNav);
 linksButton.addEventListener("click", pulloutMenuLinks);
 collapseButton.addEventListener("click", collapse);
+contactButton.addEventListener("click", () => alert("Sorry, I haven't gotten around to making \"Contact me\" work yet"));
 
 function pulloutMenuNav() {
     menuButton.style.display = "none";
