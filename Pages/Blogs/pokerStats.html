@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker stats</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../javascript/menu.js" defer></script>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <div class="mobile-menu">
+        <button id="collapse">collapse menu</button>
+        <div class="floating-tabs">
+            <button id="navTab">Navigation</button>
+            <button id="linksTab">External links</button>
+        </div>
+    </div>
+    <div class="outer-container">
+        <header>
+            <div class="left-header">
+                <ul id="left-header-btns">
+                    <li>                    
+                        <a href="../../index.html">
+                            <img id="home-icon" src="../../assets/house-chimney.svg" alt="Home icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title-card">
+                <p>John's webpage</p>
+            </div>
+            <div class="right-header">
+                <div id="contact-me-btn">
+                    <p>Contact me!</p>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="left-menu">
+                <div class="left-box">
+                    <h1>Navigation Menu</h1>
+                    <ul>
+                        <a href="../../index.html"><li>Home</li></a>
+                        <a href="./Blog-archive.html"><li>Blog archive</li></a>
+                        <a href="../Outdoors/trip-reports.html"><li>The great outdoors!
+                        </li></a>
+                        <a href="../Projects/projects.html"><li>Projects</li></a>
+                        <a href="../About-me/about.html"><li>About me</li></a>
+                    </ul>
+                </div>
+            </div>
+            <div class="center-content">
+                <article>
+                    <h1>Some statistics from my poker homegame</h1>
+                    <p>
+                        For some reason, I'm the bookkeeper for my friend group's poker night. Since I've been brushing up on my SQL recently, I thought it'd be a good 
+                        exercise to create a database for our records. Once I had done that, it felt natural to compile a few statistics from our games (mostly using Pandas). 
+                    </p>
+                    <p>
+                        Before getting into that, though, some disclaimers: while our game has been going off and on for nearly 4 years now (wow! time flies), these stats are just from late 2021 to the start of 2023. 
+                        I decided on these dates because sometime in mid-2021 we settled all the running debts (though I might go back sometime and include them just out of curiosty). For a little
+                        while after that, my record taking was pretty terrible, but I managed to get a little back on track after a couple months.
+                    </p>
+                    <p>
+                        For those who don't play poker, an important thing to keep in mind is that the sample size here is abysmally small. It might sound like 19 sessions over a year and a bit 
+                        would yield some good data, but the variance in poker is so extreme that drawing even the most basic conclusion is risky; for instance, though I don't 
+                        track total number of hands played, I'd guess that we average something like 50 hands an hour, and a session is roughly 2 hours long, so the sample size is around 2000 hands.
+                        Most experts recommend a sample of at least 10,000 hands to draw any sort of conclusion about whether you are a winning player or not, and more like 50,000 to estimate winrates
+                        and other more specific stats.
+                    </p>
+                    <h2>
+                        Net Won
+                    </h2>
+                    <p>
+                        Ok, here's what we're fundamentally interested in: the net amount won, tracked over all 19 sessions:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/winnings.png">
+                        <figcaption>Can't complain too much about my line, lol</figcaption>
+                    </figure>
+                    <p>
+                        In conjunction with my performance from games prior to mid-2021, I think it's safe to say I'm a winning player in this pool. You might think that 'BM' in this graph is a losing player, 
+                        but in the prior games he had the third most winnings, and is still net up; goes to show just how swingy this game can be. The final tally in tabular form is this:
+                    </p>
+                    <table>
+                        <tr>
+                            <td>JH</td> <td>84.23</td>
+                        </tr>
+                        <tr>
+                            <td>DG</td> <td>8.47</td>
+                        </tr>
+                        <tr>
+                            <td>SF</td> <td>3.91</td>
+                        </tr>
+                        <tr>
+                            <td>RP</td> <td>3.41</td>
+                        </tr>
+                        <tr>
+                            <td>ZF</td> <td>1.16</td>
+                        </tr>
+                        <tr>
+                            <td>LA</td> <td>-4.39</td>
+                        </tr>
+                        <tr>
+                            <td>JK</td> <td>-13.09</td>
+                        </tr>
+                        <tr>
+                            <td>BL</td> <td>-20.09</td>
+                        </tr>
+                        <tr>
+                            <td>BM</td> <td>-63.61</td>
+                        </tr>
+                    </table>
+                    <h2>Other Stats</h2>
+                    <p>
+                        Next up is attendence:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/attendance.png">
+                        <figcaption>Notice anything, potential employers?</figcaption>
+                    </figure>
+                    <p>
+                        I also though it'd be interesting to take a look at the standard deviation:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/std.png">
+                        <figcaption>Only players who attended at least 10 sessions shown</figcaption>
+                    </figure>
+                    <p class="lastPara">
+                        Gotta say, this one really aligns with my preconcieved about how we play. Maybe it's just a cooincidence, but the player LA plays extremely conservatively, and DG is extremely loose.
+                        It seems to lend credence to the idea that one can strongly control the variance in poker by adjusting one's style.
+                    </p>
+                </article>
+            </div>
+            <div class="right-menu">
+                <div class="right-box">
+                    <h1>External links</h1>
+                    <h2>Coding</h2>
+                    <ul>
+                        <a href="https://github.com/John-Douglas-Hynes/"><li><img src="../../assets/Octicons-mark-github.svg.png"></li></a>
+                        <a href="https://leetcode.com/Terrarium/"><li><img src="../../assets/leetcode.svg">
+                        </li></a>
+                    </ul>
+                    <h2>Social media</h2>
+                    <ul>
+                        <a href=""><li><img src="../../assets/Instagram-Icon.png"></li></a>
+                        <a href=""><li><img src="../../assets/strava.png">
+                        </li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
