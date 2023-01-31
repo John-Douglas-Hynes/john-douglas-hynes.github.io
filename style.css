@@ -163,6 +163,11 @@ header #contact-me-btn:hover {
     padding: 0;
 }
 
+article {
+    max-width: min(800px, 100%);
+    align-self: center;
+}
+
 .main-content .center-content {
     flex: 8 1 128px;
     text-align: center;
@@ -340,10 +345,5 @@ footer {
     border-top: 0;
     border-right: 0;
     border-bottom: 0;
-}
-
-article {
-    max-width: min(800px, 80%);
-    align-self: center;
 }
 
