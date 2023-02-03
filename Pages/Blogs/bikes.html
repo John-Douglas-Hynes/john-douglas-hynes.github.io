@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="../../javascript/menu.js" defer></script>
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <div class="mobile-menu">
+        <button id="collapse">collapse menu</button>
+        <div class="floating-tabs">
+            <button id="navTab">Navigation</button>
+            <button id="linksTab">External links</button>
+        </div>
+    </div>
+    <div class="outer-container">
+        <header>
+            <div class="left-header">
+                <ul id="left-header-btns">
+                    <li>                    
+                        <a href="../../index.html">
+                            <img id="home-icon" src="../../assets/house-chimney.svg" alt="Home icon">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="title-card">
+                <p>John's webpage</p>
+            </div>
+            <div class="right-header">
+                <div id="contact-me-btn">
+                    <p>Contact me!</p>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="left-menu">
+                <div class="left-box">
+                    <h1>Navigation Menu</h1>
+                    <ul>
+                        <a href="../../index.html"><li>Home</li></a>
+                        <a href="./Blog-archive.html"><li>Blog archive</li></a>
+                        <a href="../Outdoors/trip-reports.html"><li>The great outdoors!
+                        </li></a>
+                        <a href="../Projects/projects.html"><li>Projects</li></a>
+                        <a href="../About-me/about.html"><li>About me</li></a>
+                    </ul>
+                </div>
+            </div>
+            <div class="center-content">
+                <article>
+                    <h1>Thoughts on Bicycles</h1>
+                    <p class="subhead"> 
+                        Bicycles, if you are not aware, are pretty incredible machines. They are uncomplicated, 
+                        small, light, fast, easy to use, and efficient. <strong>Insanely</strong> efficient, in fact; discounting renewably powered modes of transport like sailing, they
+                        are the most efficent vehicles that humans have invented. Let's take a look:
+                    </p>
+                    <p>
+                        In order to keep things consistent, we'll measure distance per litre of gasoline &mdash; obviously humans can't actually digest gasoline (or is that just me?), but since 
+                        1 litre of gas contains about 8000 kcal, we'll be using that. For human powered transport, we'll count calories burned for moving<sup><a href="#footnote-1" class="footnote" id="top1">[1]</a></sup> 
+                        . The value for aircraft is for a large jet at full capacity, measured is distance per liter per passenger.
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/LogEfficiency.png">
+                        <figcaption>There should probably be some large error bars on this, but you get the gist</figcaption>
+                    </figure>
+                    <p>
+                        Of course, whenever I use a log scale I'm reminded of this XKCD comic:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="https://imgs.xkcd.com/comics/log_scale.png">
+                    </figure>
+                    <p>
+                        Ok, fine. With a linear scale, we get this:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/Efficiency.png">
+                    </figure>
+                    <p>
+                        One of the great mysteries of bicycles is why they were invented so late. And by late, I mean really, really, astoundingly late. At their core, bicycles are 
+                        a straightforward combination of some wheel and axles, a crankshaft, and a gear, all of which have been in use for at least 5000 years. Yet the modern bicycle 
+                        postdates the submarine, and not just by a little: the first operational submarine came over <em>200 years</em> before modern bikes. Now you could object 
+                        that it's unfair to compare a prototype to widespread distribution, since that first submarine was really just a stunt. But still, submarines began seeing widespread use 
+                        by the time of the American civil war. By that time, people were only just beginning to attach pedals to wheels, and the modern bike was still over a decade away.
+                    </p>
+                    <h3>A brief history of bicycles</h3>
+                    <p>
+                        So when was the first bicycle invented? Like most technology, it didn't appear out of thin air; rather, it was a refinement of some early prototypes which had some, but not all 
+                        of the features we associate with modern bikes.<br>
+                        The first widespread human-powered wheeled transport is probably the dandy horse, invented in 1817. It was powered by pushing against the ground, kind of like a Flintstones car but 
+                        on two wheels.
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/Draisine.jpg">
+                    </figure>
+                    <p>
+                        As you can probably imagine, these weren't all that fast. It took another few decades before people began attaching pedals to these bad boys, giving us something actually close to a bicycle:
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/McCall1869.jpg">
+                    </figure>
+                    <p>
+                        These were still missing a crankshaft with gearing; the pedals were attached directly to the front wheel. Once again, they wouldn't have been very fast, since one's speed 
+                        was limited by the rotations per second of the front wheel. By now these were getting pretty popular, so the more speed-oriented cyclist came up with an obvious work-around: 
+                        just make the front wheel bigger! Thus the penny-farthing was born.
+                    </p>
+                    <figure class="trip-figure">
+                        <img id="farthing" src="../../images/Penny-Farthing.jpg">
+                    </figure>
+                    <p>
+                        Finally, in 1876, the safety bicycle was invented. Nearly a century after the hot air balloon; 70 years after the steam locomotive; and predating the first airplane by a mere 27 years.
+                    </p>
+                    <figure class="trip-figure">
+                        <img src="../../images/Ladies_safety_bicycles1889.gif">
+                    </figure>
+                    <h3>Why not sooner?</h3>
+                    <p>
+                        So why, exactly, was the bicycle invented so late? Of course, this is kind of a silly question; you could similarly ask why no-one thought of probability theory until well after the invention of calculus, and it is just as unanswerable.
+                        Still, these ideas don't live in a vacuum; surely there must have been either other technology that filled the transportation need, or big obstacles to overcome for practicability.
+                    </p>
+                    <p>
+                        Before I list the reasons that I personally think are reasonable, I'm gonna go over some things I've read which I find unconvincing:
+                        <ul>
+                            <li><strong>Without rubber tires bicycles are impractical:</strong> for a while I thought this was the most likely explanation. Before widespread pavement/asphault, wheeled travel would have been very bumpy, and any 
+                            bicycle-like transport would be extremely uncomfortable. Thus the invention of the bicycle cannot precede the invention of some such shock absoption (which is much harder to do than slapping some gears on some wheels). 
+                            But it turns out that this is just false! That is, the bicycle does predate rubber tires; in fact, the pneumatic tire was invented <em>for</em> bikes! (Well, tricycles, actually). There is an element of truth to this line of thought, though -- bikes were 
+                            allegedy pretty uncomfortable before rubber tires. In fact, one of the main draws to penny-farthings were their smoother ride compared to smaller-wheeled bikes.</li>
+                            <li><strong>Bikes need fine metalworking technology</strong> this is mostly brought up about bike chains, but there are reasonable alternatives: belt drives, for instance, which can be made with leather. Other times this is brought up about gearing, 
+                                but fixie bikes solve a lot of those issues.
+                            </li>
+                            <li><strong>Bike stability makes them unreasonable to consider practical</strong> The line of thinking goes something like this: no one would think to invent the bicycle because without building one, it's 
+                                hard to see that they would be stable. Again, there's an element of truth here: the reason why bikes are stable is surprisingly complex (it's not gyroscopic effects, but it's still complicated). But I don't see why people wouldn't have invented 
+                                the tricycle, then quickly gone to bikes from there.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        That out of the way, here are some of the reasons I do find convincing:
+                        <ul>
+                            <li><strong>Horses are OP:</strong> horses solve a ton of the same transportation problems that bikes do, plus many more. Many of the advantages of bikes over horses might not apply 
+                                to life pre-industrial revolution (like space constraints), though I'd have to do a bit more research on this (how many people owned horses? how much effort was expended in keeping them?)
+                            </li>
+                            <li>
+                                <strong>No roads:</strong> while roads are definitely pretty ancient, they were not necessarily very widespread (at least high-quality, flat-ish roads). Bikes may not require perfectly level asphault, 
+                                but they do need fairly level hard surfaces; tall grass or mud are pretty much out of the question. I'm kinda unsure about this objection, because I have no idea what the average ancient road 
+                                was actually like, so I could be very wrong about this.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        There are almost certainly some things missing from both lists &mdash; I'll consider writing more on this if I come across anything new.
+                    </p>
+                    <h3>Why not now?</h3>
+                    <p>
+                        This question is just as confusing as the previous one, if not more so. Bicycles are so perfectly suited for <em>so much</em> modern, urban transit. Yet in North America, at least, 
+                        they are hugely underutilised, often consisting of less than 2% of trips within major cities. Many of the reasons that I've heard over the years don't pass the slightest bit of scrutiny: for instance, in continental climates 
+                        people will often say that it's because of the winter -- but when summer comes along, you don't see a massive modal shift to bikes (and I'm skeptical of much of the winter objections too: 
+                        see <a href="https://www.youtube.com/watch?v=Uhx-26GfCBU" target="_blank" class="link">this video</a>, for instance). Then there's the fact that some of the places with the best possible climates for bicycling have some of the lowest bicycle modal shares: it's something like 0.6% in Los Angeles, for example.<br>
+                        I tend to think the perception of safety is a probable culprit: there are few things more unpleasant than feeling a truck whip by you mere inches away at 70kph or more, and I can think of many friends and family
+                        who don't bike on roads for precisely this reason. But even when there are safe alternatives to biking on the road, bikes see less use than I'd expect. Frankly, sometimes I wonder if this isn't an example of people not living their
+                         values: people like to say that they care for the environment, or that they are frugal with money. But give them a choice between
+                        a tiny bit of effort to travel or no effort at all, and they seem to consistently choose the no effort option, regardless of other factors.
+                    </p>
+                    <p class ="footnote" id="footnote-1">
+                        <sup><a href="#top1" class="footnote">[1]</a></sup> So <strong>not including</strong> the base metabolic rate, which would likely be significant if you tried to actually cover these distances, but <strong>including</strong> energy lost to muscle inefficency, which 
+                        is often estimated to be about 20%.
+                    </p>
+                </article>
+            </div>
+            <div class="right-menu">
+                <div class="right-box">
+                    <h1>External links</h1>
+                    <h2>Coding</h2>
+                    <ul>
+                        <a href="https://github.com/John-Douglas-Hynes/"><li><img src="../../assets/Octicons-mark-github.svg.png"></li></a>
+                        <a href="https://leetcode.com/Terrarium/"><li><img src="../../assets/leetcode.svg">
+                        </li></a>
+                    </ul>
+                    <h2>Social media</h2>
+                    <ul>
+                        <a href="https://www.strava.com/athletes/22481955"><li><img src="../../assets/strava.png"></li></a>
+                        <a href="https://instagram.com/hynes_travels?igshid=NDk5N2NlZjQ="><li><img src="../../assets/Instagram-Icon.png">
+                        </li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

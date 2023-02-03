@@ -200,6 +200,14 @@ article {
     padding-right: 12px;
 }
 
+.main-content .center-content ul {
+    text-align: left;
+    margin: 16px;
+    line-height: 175%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
 .main-content table {
     margin-left: auto;
     margin-right: auto;
@@ -252,6 +260,13 @@ article {
 .main-content .trip-report img {
     max-width: 100%;
     margin: 0;
+}
+
+.main-content img#farthing {
+    width: 250px;
+    margin: 0;
+    height: auto;
+    align-self: center;
 }
 
 .main-content .summary {
